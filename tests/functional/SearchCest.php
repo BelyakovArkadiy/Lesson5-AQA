@@ -11,10 +11,10 @@ class SearchCest
     public function checkSearch(FunctionalTester $I)
     {
         $I->amOnPage('');
-        $I->seeElement("#search_query_top");
-        $I->fillField('#search_query_top', "Printed dress");
-        $I->seeElement('#searchbox > button');
-        $I->click('#searchbox > button');
-        $I->seeNumberOfElements('#center_column > ul > li.ajax_block_product',5);
+        $I->seeElement("//*[@href='/muzhchinam/'][@data-id='1']");
+        $I->click("//*[@href='/muzhchinam/'][@data-id='1']");
+        $I->seeElement('.page__header-view .link--border.link');
+        $I->click('.page__header-view .link--border.link');
+        $I->seeNumberOfElements('.col-6',60);
     }
 }
