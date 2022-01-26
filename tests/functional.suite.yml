@@ -9,6 +9,6 @@ actor: FunctionalTester
 modules:
     enabled:
         - PhpBrowser:
-              url: https://intertop.kz/
+              url: https://krisha.kz/
         - \Helper\Functional
     step_decorators: ~
