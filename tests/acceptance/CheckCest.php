@@ -11,12 +11,12 @@ class CheckCest
     public function checkQuickView(AcceptanceTester $I)
     {
         $I->amOnPage('');
-        $I->seeElement('#homefeatured > li:nth-child(2) > div > div.left-block > div > a.product_img_link > img');
-        $I->moveMouseOver('#homefeatured > li:nth-child(2) > div > div.left-block > div > a.product_img_link > img');
-        $I->seeElementInDOM('#homefeatured > li:nth-child(2) > div > div.left-block > div > a.quick-view');
-        $I->moveMouseOver('#homefeatured > li:nth-child(2) > div > div.left-block > div > a.quick-view');
-        $I->click('#homefeatured > li:nth-child(2) > div > div.left-block > div > a.quick-view');
-        $I->waitForElementVisible("#index > div.fancybox-overlay.fancybox-overlay-fixed > div > div > div > div", 7);
-        $I->seeInPageSource('Blouse');
+        $I->seeElement(".main-menu li:nth-child(5)");
+        $I->click(".main-menu li:nth-child(5)");
+        $I->waitForElement('.tutorial__descr--visible',3);
+        $I->click('.tutorial__descr--visible');
+//        $I->waitForElementVisible('Новостройки в Казахстане');
+        $I->waitForElement('.complex-card--not-empty',3);
+        $I->seeNumberOfElements('.complex-card--not-empty',12);
     }
 }
