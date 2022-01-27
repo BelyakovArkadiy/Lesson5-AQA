@@ -1,8 +1,8 @@
 <?php
+
 /*
  * Класс для проверки Регистрации пользователя
  */
-
 class CheckRegistrationCest
 {
     /*
@@ -15,6 +15,7 @@ class CheckRegistrationCest
         $I->click(".registration-link-item>a");
         $I->seeElement('.signin-form');
     }
+
     /*
      * Проверяем видимость формы Регистрации при переходе с Главной через "Подать объявление"
      */
