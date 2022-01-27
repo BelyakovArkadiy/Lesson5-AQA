@@ -2,7 +2,7 @@
 /*
  *  Класс для проверки главной страницы Новостроек
  */
-class CheckCestMainComplex
+class CheckMainComplexCest
 {
     /*
     * Проверяем переход на страницу Нововстроек и выдачу списком
