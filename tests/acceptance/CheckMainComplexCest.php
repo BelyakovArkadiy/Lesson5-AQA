@@ -17,20 +17,20 @@ class CheckMainComplexCest
         $I->seeElement(\Page\Acceptance\MainPage::$tabComplex);
         $mainPage->clickToTabOfComplex();
         $I->canSeeInCurrentUrl(\Page\Acceptance\ComplexPage::$URL);
-        $I->waitForElement(\Page\Acceptance\ComplexPage::$filterHint, 3);
-        $complexPage->clickFilterHint();
+        $I->waitForElement(\Page\Acceptance\ComplexPage::$buttonCloseTheHint, 3);
+        $complexPage->closeTheHint();
         $I->waitForElement(\Page\Acceptance\ComplexPage::$cardOfComplex, 3);
         $I->seeNumberOfElements(\Page\Acceptance\ComplexPage::$cardOfComplex, 12);
     }
     /*
-     * Проверяем поиск и нулевую выдачу, по заведомо низкой цене для Алматы
+     * Проверяем поиск ЖК и нулевую выдачу, по заведомо низкой цене для Алматы
      */
-    public function checkSwitchingQuickFilters(AcceptanceTester $I)
+    public function checkShowingAtLowCostForAlmaty(AcceptanceTester $I)
     {
         $complexPage = new \Page\Acceptance\ComplexPage($I);
         $I->amOnPage(\Page\Acceptance\ComplexPage::$URL);
-        $I->waitForElement(\Page\Acceptance\ComplexPage::$filterHint, 3);
-        $complexPage->clickFilterHint()
+        $I->waitForElement(\Page\Acceptance\ComplexPage::$buttonCloseTheHint, 3);
+        $complexPage->closeTheHint()
                     ->clickFastFilter()
                     ->fillPriceTo()
                     ->clickShow();

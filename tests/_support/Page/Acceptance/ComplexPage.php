@@ -11,9 +11,9 @@ class ComplexPage
      */
     public static $URL = '/complex/search/';
     /*
-     * Селектор подсказки по фильтру "ЖК в продаже"
+     * Селектор для закрытия подсказки по фильтру "ЖК в продаже"
      */
-    public static $filterHint = '.kr-btn.kr-btn--gray-gradient';
+    public static $buttonCloseTheHint = '.kr-btn.kr-btn--gray-gradient';
     /*
      * Селектор быстрого фильтра ЖК "Алматы"( сразу после фильтра "ЖК в продаже")
      */
@@ -30,7 +30,7 @@ class ComplexPage
      * Селектор кнопки Показать
      */
     public static $buttonShow = '.kr-btn.kr-btn--blue';
-    /*
+    /**
      * объект Тестера
      *
      * @var \AcceptanceTester;
@@ -46,9 +46,9 @@ class ComplexPage
     /*
      * метод кликает на подсказку по фильтру "ЖК в продаже"
      */
-    public function clickFilterHint()
+    public function closeTheHint()
     {
-        $this->acceptanceTester->click(self::$filterHint);
+        $this->acceptanceTester->click(self::$buttonCloseTheHint);
 
         return $this;
     }
