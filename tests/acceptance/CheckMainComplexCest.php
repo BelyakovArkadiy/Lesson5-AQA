@@ -11,12 +11,30 @@ class CheckMainComplexCest
      */
     public function checkIssuanceOnTheMain(AcceptanceTester $I)
     {
-        $I->amOnPage('');
-        $I->seeElement(".main-menu li:nth-child(5)");
-        $I->click(".main-menu li:nth-child(5)");
-        $I->waitForElement('.tutorial__descr--visible', 3);
-        $I->click('.tutorial__descr--visible');
-        $I->waitForElement('.complex-card--not-empty', 3);
-        $I->seeNumberOfElements('.complex-card--not-empty', 12);
+        $mainPage = new \Page\Acceptance\MainPage($I);
+        $complexPage = new \Page\Acceptance\ComplexPage($I);
+        $I->amOnPage(\Page\Acceptance\MainPage::$URL);
+        $I->seeElement(\Page\Acceptance\MainPage::$tabComplex);
+        $mainPage->clickToTabOfComplex();
+        $I->canSeeInCurrentUrl(\Page\Acceptance\ComplexPage::$URL);
+        $I->waitForElement(\Page\Acceptance\ComplexPage::$filterHint, 3);
+        $complexPage->clickFilterHint();
+        $I->waitForElement(\Page\Acceptance\ComplexPage::$cardOfComplex, 3);
+        $I->seeNumberOfElements(\Page\Acceptance\ComplexPage::$cardOfComplex, 12);
+    }
+    /*
+     * Проверяем поиск и нулевую выдачу, по заведомо низкой цене для Алматы
+     */
+    public function checkSwitchingQuickFilters(AcceptanceTester $I)
+    {
+        $complexPage = new \Page\Acceptance\ComplexPage($I);
+        $I->amOnPage(\Page\Acceptance\ComplexPage::$URL);
+        $I->waitForElement(\Page\Acceptance\ComplexPage::$filterHint, 3);
+        $complexPage->clickFilterHint()
+                    ->clickFastFilter()
+                    ->fillPriceTo()
+                    ->clickShow();
+        $I->waitForText("Ничего не найдено");
+
     }
 }
