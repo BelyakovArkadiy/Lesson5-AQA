@@ -15,13 +15,13 @@ class ComplexPage
      */
     public static $buttonCloseTheHint = '.kr-btn.kr-btn--gray-gradient';
     /*
-     * Селектор быстрого фильтра ЖК "Алматы"( сразу после фильтра "ЖК в продаже")
+     * Селектор быстрого фильтра ( сразу после фильтра "ЖК в продаже")
      */
     public static $fastFilter = 'button.complex-fast-filter__item:nth-child(2)';
     /*
      * Селектор карточки ЖК
      */
-    public static $cardOfComplex = '.complex-card--not-empty';
+    public static $cardOfComplex = '.complex-card ';
     /*
      * Селектор фильтра "Цена До"
      */
@@ -66,7 +66,7 @@ class ComplexPage
      */
     public function fillPriceTo()
     {
-        $this->acceptanceTester->fillField(self::$filterPriceTo, 500000);
+        $this->acceptanceTester->fillField(self::$filterPriceTo, 1);
 
         return $this;
     }

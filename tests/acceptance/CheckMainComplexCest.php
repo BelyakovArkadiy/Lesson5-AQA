@@ -23,9 +23,9 @@ class CheckMainComplexCest
         $I->seeNumberOfElements(\Page\Acceptance\ComplexPage::$cardOfComplex, 12);
     }
     /*
-     * Проверяем поиск ЖК и нулевую выдачу, по заведомо низкой цене для Алматы
+     * Проверяем поиск ЖК за 1 тенге и нулевую выдачу
      */
-    public function checkShowingAtLowCostForAlmaty(AcceptanceTester $I)
+    public function checkShowingAtLowCost(AcceptanceTester $I)
     {
         $complexPage = new \Page\Acceptance\ComplexPage($I);
         $I->amOnPage(\Page\Acceptance\ComplexPage::$URL);
