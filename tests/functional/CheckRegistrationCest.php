@@ -31,4 +31,26 @@ class CheckRegistrationCest
         $mainPage->clickToAddAdvert();
         $I->seeElement(AuthPage::$formRegistrations);
     }
+
+    /*
+     * Авторизуемся валидными данными через Подачу
+     */
+    public function checkSuccessfulAuth(FunctionalTester $I)
+    {
+        $mainPage = new MainPage($I);
+        $authPage = new AuthPage($I);
+        $I->amOnPage('');
+        $I->seeElement(MainPage::$tabAdvertAdd);
+        $mainPage->clickToAddAdvert();
+        $I->canSeeElement(AuthPage::$formRegistrations);
+        $authPage->addLogin();
+        $I->canSeeElement(AuthPage::$buttonContinue);
+        $authPage->clickContinue();
+        $I->canSeeElement(AuthPage::$fieldPassword);
+        $authPage->addPassword();
+        $I->canSeeElement(AuthPage::$buttonContinue);
+        $authPage->clickContinue();
+        $I->canSeeInCurrentUrl('https://new-master-kr.kolesa-team.org/my');
+
+    }
 }
