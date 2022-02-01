@@ -1,5 +1,7 @@
 <?php
 
+use Page\Acceptance\MainPage;
+use Page\Acceptance\ComplexPage;
 /*
  *  Класс для проверки главной страницы Новостроек
  */
@@ -11,30 +13,31 @@ class CheckMainComplexCest
      */
     public function checkIssuanceOnTheMain(AcceptanceTester $I)
     {
-        $mainPage = new \Page\Acceptance\MainPage($I);
-        $complexPage = new \Page\Acceptance\ComplexPage($I);
-        $I->amOnPage(\Page\Acceptance\MainPage::$URL);
-        $I->seeElement(\Page\Acceptance\MainPage::$tabComplex);
+        $mainPage = new MainPage($I);
+        $complexPage = new ComplexPage($I);
+        $I->amOnPage(MainPage::$URL);
+        $I->seeElement(MainPage::$tabComplex);
         $mainPage->clickToTabOfComplex();
-        $I->canSeeInCurrentUrl(\Page\Acceptance\ComplexPage::$URL);
-        $I->waitForElement(\Page\Acceptance\ComplexPage::$buttonCloseTheHint, 3);
+
+        $I->canSeeInCurrentUrl(ComplexPage::$URL);
+        $I->waitForElement(ComplexPage::$buttonCloseTheHint);
         $complexPage->closeTheHint();
-        $I->waitForElement(\Page\Acceptance\ComplexPage::$cardOfComplex, 3);
-        $I->seeNumberOfElements(\Page\Acceptance\ComplexPage::$cardOfComplex, 12);
+        $I->waitForElement(ComplexPage::$cardOfComplex);
+        $I->seeNumberOfElements(ComplexPage::$cardOfComplex, 12);
     }
+
     /*
      * Проверяем поиск ЖК за 1 тенге и нулевую выдачу
      */
-    public function checkShowingAtLowCost(AcceptanceTester $I)
+    public function checkSearchAndNullIssuance(AcceptanceTester $I)
     {
-        $complexPage = new \Page\Acceptance\ComplexPage($I);
-        $I->amOnPage(\Page\Acceptance\ComplexPage::$URL);
-        $I->waitForElement(\Page\Acceptance\ComplexPage::$buttonCloseTheHint, 3);
+        $complexPage = new ComplexPage($I);
+        $I->amOnPage(ComplexPage::$URL);
+        $I->waitForElement(ComplexPage::$buttonCloseTheHint);
         $complexPage->closeTheHint()
                     ->clickFastFilter()
                     ->fillPriceTo()
                     ->clickShow();
         $I->waitForText("Ничего не найдено");
-
     }
 }

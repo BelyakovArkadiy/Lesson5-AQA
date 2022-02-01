@@ -10,32 +10,39 @@ class ComplexPage
      * Урл страницы Новостройки
      */
     public static $URL = '/complex/search/';
+
     /*
      * Селектор для закрытия подсказки по фильтру "ЖК в продаже"
      */
     public static $buttonCloseTheHint = '.kr-btn.kr-btn--gray-gradient';
+
     /*
-     * Селектор быстрого фильтра ( сразу после фильтра "ЖК в продаже")
+     * Селектор для выбора быстрого фильтра
      */
     public static $fastFilter = 'button.complex-fast-filter__item:nth-child(2)';
+
     /*
      * Селектор карточки ЖК
      */
     public static $cardOfComplex = '.complex-card ';
+
     /*
      * Селектор фильтра "Цена До"
      */
     public static $filterPriceTo = '#complex-filter-price-to';
+
     /*
      * Селектор кнопки Показать
      */
     public static $buttonShow = '.kr-btn.kr-btn--blue';
+
     /**
      * объект Тестера
      *
      * @var \AcceptanceTester;
      */
     protected $acceptanceTester;
+
     /*
      * метод контструктора
      */
@@ -43,8 +50,9 @@ class ComplexPage
     {
         $this->acceptanceTester = $I;
     }
+
     /*
-     * метод кликает на подсказку по фильтру "ЖК в продаже"
+     * метод закрывает подсказку для быстрого фильтра "ЖК в продаже"
      */
     public function closeTheHint()
     {
@@ -52,8 +60,9 @@ class ComplexPage
 
         return $this;
     }
+
     /*
-     * метод кликает на быстрый фильтр
+     * метод выбирает  быстрый фильтр
      */
     public function clickFastFilter()
     {
@@ -61,8 +70,9 @@ class ComplexPage
 
         return $this;
     }
+
     /*
-     * метод вводит в фильтр "Цена До" стоимость
+     * метод заполняет цифрами фильтр "Цена До"
      */
     public function fillPriceTo()
     {
@@ -70,6 +80,10 @@ class ComplexPage
 
         return $this;
     }
+
+    /*
+     * метод нажимает на кнопку "Показать"
+     */
     public function clickShow()
     {
         $this->acceptanceTester->click(self::$buttonShow);

@@ -1,5 +1,8 @@
 <?php
 
+use Page\Functional\MainPage;
+use Page\Functional\AuthPage;
+
 /*
  * Класс для проверки Регистрации пользователя
  */
@@ -10,10 +13,11 @@ class CheckRegistrationCest
      */
     public function checkRegistrationFormVisible(FunctionalTester $I)
     {
+        $mainPage = new MainPage($I);
         $I->amOnPage('');
-        $I->seeElement(".registration-link-item>a");
-        $I->click(".registration-link-item>a");
-        $I->seeElement('.signin-form');
+        $I->seeElement(MainPage::$tabRegistrations);
+        $mainPage->clickToRegistrations();
+        $I->seeElement(AuthPage::$formRegistrations);
     }
 
     /*
@@ -21,9 +25,10 @@ class CheckRegistrationCest
      */
     public function checkRegistrationFormVisible2(FunctionalTester $I)
     {
+        $mainPage = new MainPage($I);
         $I->amOnPage('');
-        $I->seeElement(".btn.btn-default ");
-        $I->click(".btn.btn-default");
-        $I->seeElement('.signin-form');
+        $I->seeElement(MainPage::$tabAdvertAdd);
+        $mainPage->clickToAddAdvert();
+        $I->seeElement(AuthPage::$formRegistrations);
     }
 }
