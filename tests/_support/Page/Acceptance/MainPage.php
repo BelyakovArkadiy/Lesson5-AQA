@@ -1,9 +1,9 @@
 <?php
 namespace Page\Acceptance;
 
-/*
- * Главная страница
- */
+    /*
+     * Главная страница
+     */
 class MainPage
 {
     /*
@@ -25,7 +25,7 @@ class MainPage
      */
     public static $tabComplex = ".main-menu li:nth-child(5)";
 
-    /*
+    /**
      * объект Тестера
      *
      * @var \AcceptanceTester;

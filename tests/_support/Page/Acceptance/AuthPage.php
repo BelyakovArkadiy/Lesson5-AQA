@@ -1,6 +1,9 @@
 <?php
-namespace Page\Functional;
+namespace Page\Acceptance;
 
+    /*
+     * Страница Авторизации/Регистрации
+     */
 class AuthPage
 {
     /*
@@ -38,20 +41,19 @@ class AuthPage
      */
     public static $fieldPassword = 'input[type=password]';
 
-
-    /*
+    /**
      * объект Тестера
      *
-     * @var \FunctionalTester;
+     * @var \AcceptanceTester;
      */
-    protected $functionalTester;
+    protected $acceptanceTester;
 
     /*
      * метод контструктора
      */
-    public function __construct(\FunctionalTester $I)
+    public function __construct(\AcceptanceTester $I)
     {
-        $this->functionalTester = $I;
+        $this->acceptanceTester = $I;
     }
 
     /*
@@ -59,7 +61,7 @@ class AuthPage
      */
     public function addLogin()
     {
-        $this->functionalTester->fillField(self::$fieldLogin,self::VALIDLOGIN);
+        $this->acceptanceTester->fillField(self::$fieldLogin,self::VALIDLOGIN);
 
         return $this;
     }
@@ -69,7 +71,7 @@ class AuthPage
      */
     public function addPassword()
     {
-        $this->functionalTester->fillField(self::$fieldPassword,self::VALIDPASSWORD);
+        $this->acceptanceTester->fillField(self::$fieldPassword,self::VALIDPASSWORD);
 
         return $this;
     }
@@ -79,7 +81,7 @@ class AuthPage
      */
     public function clickContinue()
     {
-        $this->functionalTester->click(self::$buttonContinue);
+        $this->acceptanceTester->click(self::$buttonContinue);
 
         return $this;
     }

@@ -2,6 +2,8 @@
 
 use Page\Acceptance\MainPage;
 use Page\Acceptance\ComplexPage;
+use Page\Acceptance\AuthPage;
+use Page\Acceptance\MyPage;
 /*
  *  Класс для проверки главной страницы Новостроек
  */
@@ -39,5 +41,26 @@ class CheckMainComplexCest
                     ->fillPriceTo()
                     ->clickShow();
         $I->waitForText("Ничего не найдено");
+    }
+
+    /*
+     * Авторизуемся валидными данными через Подачу
+     */
+    public function checkSuccessfulAuth(AcceptanceTester $I)
+    {
+        $mainPage = new MainPage($I);
+        $authPage = new AuthPage($I);
+        $I->amOnPage('');
+        $I->seeElement(MainPage::$tabAdvertAdd);
+        $mainPage->clickToAddAdvert();
+        $I->canSeeElement(AuthPage::$formRegistrations);
+        $authPage->addLogin();
+        $I->waitForElementVisible(AuthPage::$buttonContinue);
+        $authPage->clickContinue();
+        $I->waitForElementVisible(AuthPage::$fieldPassword);
+        $authPage->addPassword();
+        $I->waitForElementVisible(AuthPage::$buttonContinue);
+        $authPage->clickContinue();
+        $I->amOnUrl(MyPage::$URL);
     }
 }
