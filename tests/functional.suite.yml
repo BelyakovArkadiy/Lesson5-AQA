@@ -9,6 +9,6 @@ actor: FunctionalTester
 modules:
     enabled:
         - PhpBrowser:
-              url: https://krisha.kz/
+              url: https://new-master-kr.kolesa-team.org/
         - \Helper\Functional
     step_decorators: ~
