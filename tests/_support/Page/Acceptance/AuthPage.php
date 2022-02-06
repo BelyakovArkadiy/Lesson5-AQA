@@ -17,6 +17,11 @@ class AuthPage
     public const VALIDPASSWORD = "123123";
 
     /*
+     * Невалидный пароль
+     */
+    public const INVALIDPASSWORD = "123456";
+
+    /*
      * Урл страницы регистрации/авторизации
      */
     public static $URL = 'https://id.kolesa-team.org/login/?destination=https%3A%2F%2Fnew-master-kr.kolesa-team.org%2Fpassport%2Fregister';
@@ -40,6 +45,10 @@ class AuthPage
      * Селектор поля Пароль
      */
     public static $fieldPassword = 'input[type=password]';
+    /*
+     * Селектор поля Пароль
+     */
+    public static $alert = '.alert.alert-danger';
 
     /**
      * объект Тестера
@@ -67,11 +76,21 @@ class AuthPage
     }
 
     /*
-     * метод заполнения поле Пароль
+     * метод заполнения поле Пароль валидным паролем
      */
     public function addPassword()
     {
         $this->acceptanceTester->fillField(self::$fieldPassword,self::VALIDPASSWORD);
+
+        return $this;
+    }
+
+    /*
+     * метод заполнения поле Пароль невалидными данными
+     */
+    public function addInvalidPassword()
+    {
+        $this->acceptanceTester->fillField(self::$fieldPassword,self::INVALIDPASSWORD);
 
         return $this;
     }
