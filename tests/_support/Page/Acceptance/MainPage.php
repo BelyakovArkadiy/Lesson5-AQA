@@ -12,6 +12,11 @@ class MainPage
     public static $URL = '';
 
     /*
+     * Урл релиза Главной страницы
+     */
+    public static $URLRELEASE = '/RELEASE.txt';
+
+    /*
      * Селектор на таб "Регистрация"
      */
     public static $tabRegistrations = '.registration-link-item>a';

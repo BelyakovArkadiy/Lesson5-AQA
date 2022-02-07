@@ -10,11 +10,11 @@ use Page\Acceptance\MyPage;
  */
 class CheckMainComplexCest
 {
+
 /**
  * Общий класс для тестов фронтенда.
  */
-abstract class AbstractCest extends Base
-{
+
     /**
      * Переход на поддомен десктопной версии перед выполнением тестов
      *
@@ -26,18 +26,20 @@ abstract class AbstractCest extends Base
 //
 //        $this->prepareWebDriver($I);
 
-        $I->setCookie('tutorialDisabled', 'true');
-
-        // отключаем сторонние скрипты (QA)
-        $I->setCookie('remote-resources-disable', '1');
-
+//        $I->amOnPage(MainPage::$URLRELEASE);
+//
+//        $I->setCookie('tutorialDisabled', 'true');
+////
+//////         отключаем сторонние скрипты (QA)
+//        $I->setCookie('remote-resources-disable', '1');
+////
 //        // отключаем центральную рекомендацию чтобы не мешала тестам
 //        $I->setCookie('h-PP-CBr', 'testing');
 //
 //        // отключаем чертополох
 //        $I->setCookie('thistleMock', 'true');
-//
-}
+
+    }
 
     /*
      * Проверяем переход на страницу Новостроек и отображение карточек ЖК
@@ -71,49 +73,5 @@ abstract class AbstractCest extends Base
                     ->fillPriceTo()
                     ->clickShow();
         $I->waitForText("Ничего не найдено");
-    }
-
-    /*
-     * Авторизуемся валидными данными через Подачу
-     */
-    public function checkSuccessfulAuth(AcceptanceTester $I)
-    {
-        $mainPage = new MainPage($I);
-        $authPage = new AuthPage($I);
-        $I->amOnPage('');
-        $I->seeElement(MainPage::$tabAdvertAdd);
-        $mainPage->clickToAddAdvert();
-        $I->canSeeElement(AuthPage::$formRegistrations);
-        $authPage->addLogin();
-        $I->waitForElementVisible(AuthPage::$buttonContinue);
-        $authPage->clickContinue();
-        $I->waitForElementVisible(AuthPage::$fieldPassword);
-        $authPage->addPassword();
-        $I->waitForElementVisible(AuthPage::$buttonContinue);
-        $authPage->clickContinue();
-        $I->amOnUrl(MyPage::$URL);
-    }
-
-    /*
-     * Авторизуемся невалидным паролем
-     */
-    public function checkAuthWithInvalidPassword(AcceptanceTester $I)
-    {
-        $faker =
-        $mainPage = new MainPage($I);
-        $authPage = new AuthPage($I);
-        $I->amOnPage('');
-        $I->seeElement(MainPage::$tabAdvertAdd);
-        $mainPage->clickToAddAdvert();
-        $I->canSeeElement(AuthPage::$formRegistrations);
-        $authPage->addLogin();
-        $I->waitForElementVisible(AuthPage::$buttonContinue);
-        $authPage->clickContinue();
-        $I->waitForElementVisible(AuthPage::$fieldPassword);
-        $authPage->addInvalidPassword();
-        $I->waitForElementVisible(AuthPage::$buttonContinue);
-        $authPage->clickContinue();
-        $I->waitForElementVisible(AuthPage::$alert);
-        $I->seeInCurrentUrl(AuthPage::$URL);
     }
 }

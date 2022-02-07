@@ -12,6 +12,8 @@ class MyPage
     */
     public static $URL = 'https://new-master-kr.kolesa-team.org/my';
 
+
+
     /**
      * объект Тестера
      *
