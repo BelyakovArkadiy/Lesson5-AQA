@@ -9,7 +9,7 @@ class CheckSearchDachiCest
     {
             public function _before(AcceptanceTester $I)
             {
-                $I->amOnPage(MainPage::$URLRELEASE);
+                $I->amOnPage(MainPage::$URL_RELEASE);
 //
         $I->setCookie('tutorialDisabled', 'true');
 
@@ -25,6 +25,7 @@ class CheckSearchDachiCest
             public function seachDachainKz(AcceptanceTester $I)
             {
                 $dachiPage = new DachiPage($I);
+
                 $I->amOnPage(DachiPage::$URL);
                 $I->waitForElementVisible(DachiPage::$chooseRegion);
                 $dachiPage->clickToChoiceCity();
@@ -34,7 +35,7 @@ class CheckSearchDachiCest
                 $I->click(DachiPage::$btnChoice);
                 $I->waitForElementClickable(DachiPage::$btnSeeResult);
                 $dachiPage->clickToSeeResult();
-                $I->canSeeInCurrentUrl(DachiPage::$URLDACHIALMATY);
+                $I->canSeeInCurrentUrl(DachiPage::$URL_DACHI_ALMATY);
 
 
             }

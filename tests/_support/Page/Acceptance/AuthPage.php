@@ -9,17 +9,17 @@ class AuthPage
     /*
      * Валидный логин
      */
-    public const VALIDLOGIN = "87773823535";
+    public const VALID_LOGIN = "87773823535";
 
     /*
      * Валидный пароль
      */
-    public const VALIDPASSWORD = "123123";
+    public const VALID_PASSWORD = "123123";
 
     /*
      * Невалидный пароль
      */
-    public const INVALIDPASSWORD = "123456";
+    public const INVALID_PASSWORD = "123456";
 
     /*
      * Урл страницы регистрации/авторизации
@@ -46,9 +46,9 @@ class AuthPage
      */
     public static $fieldPassword = 'input[type=password]';
     /*
-     * Селектор поля Пароль
+     * Селектор алерта при вводе невалидного пароля
      */
-    public static $alert = '.alert.alert-danger';
+    public static $alertDanger = '.alert.alert-danger';
 
     /**
      * объект Тестера
@@ -70,7 +70,7 @@ class AuthPage
      */
     public function addLogin()
     {
-        $this->acceptanceTester->fillField(self::$fieldLogin,self::VALIDLOGIN);
+        $this->acceptanceTester->fillField(self::$fieldLogin,self::VALID_LOGIN);
 
         return $this;
     }
@@ -80,7 +80,7 @@ class AuthPage
      */
     public function addPassword()
     {
-        $this->acceptanceTester->fillField(self::$fieldPassword,self::VALIDPASSWORD);
+        $this->acceptanceTester->fillField(self::$fieldPassword,self::VALID_PASSWORD);
 
         return $this;
     }
@@ -90,9 +90,8 @@ class AuthPage
      */
     public function addInvalidPassword()
     {
-        $this->acceptanceTester->fillField(self::$fieldPassword,self::INVALIDPASSWORD);
+        $this->acceptanceTester->fillField(self::$fieldPassword,self::INVALID_PASSWORD);
 
-        return $this;
     }
 
     /*

@@ -22,22 +22,6 @@ class AuthCest
      */
     public function _before(AcceptanceTester $I)
     {
-//        $I->switchToFrontendApp();
-//
-//        $this->prepareWebDriver($I);
-
-//        $I->amOnPage(MainPage::$URLRELEASE);
-//
-//        $I->setCookie('tutorialDisabled', 'true');
-////
-////        отключаем сторонние скрипты (QA)
-//        $I->setCookie('remote-resources-disable', '1');
-////
-//        // отключаем центральную рекомендацию чтобы не мешала тестам
-//        $I->setCookie('h-PP-CBr', 'testing');
-//
-//        // отключаем чертополох
-//        $I->setCookie('thistleMock', 'true');
     }
 
         /*
@@ -47,6 +31,7 @@ class AuthCest
     {
         $mainPage = new MainPage($I);
         $authPage = new AuthPage($I);
+
         $I->amOnPage(MainPage::$URL);
         $I->seeElement(MainPage::$tabAdvertAdd);
         $mainPage->clickToAddAdvert();
@@ -58,7 +43,7 @@ class AuthCest
         $authPage->addInvalidPassword();
         $I->waitForElementVisible(AuthPage::$buttonContinue);
         $authPage->clickContinue();
-        $I->waitForElementVisible(AuthPage::$alert);
+        $I->waitForElementVisible(AuthPage::$alertDanger);
     }
 
     /*
@@ -68,6 +53,7 @@ class AuthCest
     {
         $mainPage = new MainPage($I);
         $authPage = new AuthPage($I);
+
         $I->amOnPage(MainPage::$URL);
         $I->seeElement(MainPage::$tabAdvertAdd);
         $mainPage->clickToAddAdvert();
@@ -79,7 +65,7 @@ class AuthCest
         $authPage->addPassword();
         $I->waitForElementVisible(AuthPage::$buttonContinue);
         $authPage->clickContinue();
-        $I->amOnUrl(MyPage::$URL);
+        $I->canSeeInCurrentUrl(MyPage::$URL);
     }
 
 

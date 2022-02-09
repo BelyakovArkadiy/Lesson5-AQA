@@ -9,15 +9,15 @@ class DachiPage
 {
     /**
      * @var string
-     * Урл главной страницы Дачи
+     * Урл главной страницы Дачи в продаже
      */
     public static $URL = '/prodazha/dachi/';
 
     /**
      * @var string
-     * Урл Дачи Алматы
+     * Урл Дачи Алматы в продаже
      */
-    public static $URLDACHIALMATY = '/prodazha/dachi/almaty';
+    public static $URL_DACHI_ALMATY = '/prodazha/dachi/almaty';
 
     /**
      * Локатор выбора региона
@@ -35,7 +35,7 @@ class DachiPage
      * Локатор кнопки Выбрать
      *
      */
-    public  static $btnChoice = '//*[@id="a-search-form"]/div[1]/div/div[4]/div/div/div/div/div/div/div/div/div[2]/div[2]/a';
+    public  static $btnChoice = "//a[@class='btn btn-primary region-dropdown-action region-dropdown-action-apply']";
 
     /**
      * Локатор кнопки Показать результаты
