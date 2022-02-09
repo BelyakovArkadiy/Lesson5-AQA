@@ -4,11 +4,43 @@ use Page\Acceptance\MainPage;
 use Page\Acceptance\ComplexPage;
 use Page\Acceptance\AuthPage;
 use Page\Acceptance\MyPage;
+
 /*
  *  Класс для проверки главной страницы Новостроек
  */
 class CheckMainComplexCest
 {
+
+/**
+ * Общий класс для тестов фронтенда.
+ */
+
+    /**
+     * Переход на поддомен десктопной версии перед выполнением тестов
+     *
+     * @param \AcceptanceTester $I
+     */
+    public function _before(AcceptanceTester $I)
+    {
+//        $I->switchToFrontendApp();
+//
+//        $this->prepareWebDriver($I);
+
+//        $I->amOnPage(MainPage::$URLRELEASE);
+//
+//        $I->setCookie('tutorialDisabled', 'true');
+////
+//////         отключаем сторонние скрипты (QA)
+//        $I->setCookie('remote-resources-disable', '1');
+////
+//        // отключаем центральную рекомендацию чтобы не мешала тестам
+//        $I->setCookie('h-PP-CBr', 'testing');
+//
+//        // отключаем чертополох
+//        $I->setCookie('thistleMock', 'true');
+
+    }
+
     /*
      * Проверяем переход на страницу Новостроек и отображение карточек ЖК
      *
@@ -41,26 +73,5 @@ class CheckMainComplexCest
                     ->fillPriceTo()
                     ->clickShow();
         $I->waitForText("Ничего не найдено");
-    }
-
-    /*
-     * Авторизуемся валидными данными через Подачу
-     */
-    public function checkSuccessfulAuth(AcceptanceTester $I)
-    {
-        $mainPage = new MainPage($I);
-        $authPage = new AuthPage($I);
-        $I->amOnPage('');
-        $I->seeElement(MainPage::$tabAdvertAdd);
-        $mainPage->clickToAddAdvert();
-        $I->canSeeElement(AuthPage::$formRegistrations);
-        $authPage->addLogin();
-        $I->waitForElementVisible(AuthPage::$buttonContinue);
-        $authPage->clickContinue();
-        $I->waitForElementVisible(AuthPage::$fieldPassword);
-        $authPage->addPassword();
-        $I->waitForElementVisible(AuthPage::$buttonContinue);
-        $authPage->clickContinue();
-        $I->amOnUrl(MyPage::$URL);
     }
 }
