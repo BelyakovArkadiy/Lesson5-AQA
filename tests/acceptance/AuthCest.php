@@ -65,7 +65,9 @@ class AuthCest
         $authPage->addPassword();
         $I->waitForElementVisible(AuthPage::$buttonContinue);
         $authPage->clickContinue();
-        $I->canSeeInCurrentUrl(MyPage::$URL);
+        $I->waitForElementVisible(MyPage::$linkCabinet);
+        $I->click(MyPage::$linkCabinet);
+        $I->waitForElementVisible(MyPage::$infoAboutUser);
     }
 
 

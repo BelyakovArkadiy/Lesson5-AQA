@@ -12,6 +12,17 @@ class MyPage
     */
     public static $URL = 'https://new-master-kr.kolesa-team.org/my';
 
+    /*
+    * Селектор линка Кабинет
+    */
+    public static $linkCabinet = "//a[@href='#'][contains(text(),'Кабинет')]";
+
+    /*
+    * Селектор
+    */
+    public static $infoAboutUser = "//li[@class='text-item' and 'Курт Кобейн']";
+
+
 
 
     /**
