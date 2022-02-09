@@ -22,22 +22,6 @@ class CheckMainComplexCest
      */
     public function _before(AcceptanceTester $I)
     {
-//        $I->switchToFrontendApp();
-//
-//        $this->prepareWebDriver($I);
-
-//        $I->amOnPage(MainPage::$URLRELEASE);
-//
-//        $I->setCookie('tutorialDisabled', 'true');
-////
-//////         отключаем сторонние скрипты (QA)
-//        $I->setCookie('remote-resources-disable', '1');
-////
-//        // отключаем центральную рекомендацию чтобы не мешала тестам
-//        $I->setCookie('h-PP-CBr', 'testing');
-//
-//        // отключаем чертополох
-//        $I->setCookie('thistleMock', 'true');
 
     }
 
@@ -49,6 +33,7 @@ class CheckMainComplexCest
     {
         $mainPage = new MainPage($I);
         $complexPage = new ComplexPage($I);
+
         $I->amOnPage(MainPage::$URL);
         $I->seeElement(MainPage::$tabComplex);
         $mainPage->clickToTabOfComplex();
@@ -66,6 +51,7 @@ class CheckMainComplexCest
     public function checkSearchAndNullIssuance(AcceptanceTester $I)
     {
         $complexPage = new ComplexPage($I);
+
         $I->amOnPage(ComplexPage::$URL);
         $I->waitForElement(ComplexPage::$buttonCloseTheHint);
         $complexPage->closeTheHint()
