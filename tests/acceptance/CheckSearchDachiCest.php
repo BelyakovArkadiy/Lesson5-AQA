@@ -1,5 +1,5 @@
 <?php
-use Page\Acceptance\MainPage;
+
 use Page\Acceptance\DachiPage;
 use Codeception\Example;
 
@@ -10,10 +10,10 @@ class CheckSearchDachiCest
 {
     public function _before(AcceptanceTester $I)
     {
-        $I->amOnPage(MainPage::$URL_RELEASE);
-        $I->setCookie('tutorialDisabled', 'true');
-//        отключаем сторонние скрипты (QA)
-        $I->setCookie('remote-resources-disable', '1');
+//        $I->amOnPage(MainPage::$URL_RELEASE);
+//        $I->setCookie('tutorialDisabled', 'true');
+////        отключаем сторонние скрипты (QA)
+//        $I->setCookie('remote-resources-disable', '1');
     }
 
     /**
@@ -37,17 +37,19 @@ class CheckSearchDachiCest
         $I->waitForElementVisible(DachiPage::$btnSeeResult);
         $dachiPage->clickToSeeResult();
         $I->canSeeInCurrentUrl($data['url']);
+        $I->waitForText($data['header']);
+
 
     }
 
     protected function getDataSearchRegion()
     {
         return [
-            ['region' => 'almaty', 'url' => 'almaty'],
-            ['region' => 'nur-sultan', 'url' => 'nur-sultan'],
-            ['region' => 'almatinskaja-oblast', 'url' => 'almatinskaja-oblast'],
-            ['region' => 'shymkent', 'url' => 'shymkent'],
-            ['region' => 'karagandinskaja-oblast', 'url' => 'karagandinskaja-oblast']
+            ['region' => 'almaty', 'url' => 'almaty', 'header'=> 'Продажа дач в Алматы'],
+            ['region' => 'nur-sultan', 'url' => 'nur-sultan', 'header' => 'Продажа дач в Нур-Султане (Астана)'],
+            ['region' => 'almatinskaja-oblast', 'url' => 'almatinskaja-oblast', 'header' => 'Продажа дач в Алматинской обл.'],
+            ['region' => 'shymkent', 'url' => 'shymkent', 'header' => 'Продажа дач в Шымкенте'],
+            ['region' => 'karagandinskaja-oblast', 'url' => 'karagandinskaja-oblast', 'header' => 'Продажа дач в Карагандинской обл.']
         ];
     }
 }

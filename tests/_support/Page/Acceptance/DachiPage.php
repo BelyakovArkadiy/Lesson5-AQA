@@ -38,9 +38,6 @@ class DachiPage
      */
     public  static $btnSeeResult = ".btn-submit.search-btn-main";
 
-
-
-
     /**
      * объект Тестера
      *
