@@ -2,6 +2,7 @@
 
 use Page\Acceptance\DachiPage;
 use Codeception\Example;
+use Page\Acceptance\MainPage;
 
 /**
  * Класс для поиска Дачи для покупки
@@ -10,10 +11,10 @@ class CheckSearchDachiCest
 {
     public function _before(AcceptanceTester $I)
     {
-//        $I->amOnPage(MainPage::$URL_RELEASE);
-//        $I->setCookie('tutorialDisabled', 'true');
-////        отключаем сторонние скрипты (QA)
-//        $I->setCookie('remote-resources-disable', '1');
+        $I->amOnPage(MainPage::$URL_RELEASE);
+        $I->setCookie('tutorialDisabled', 'true');
+//        отключаем сторонние скрипты (QA)
+        $I->setCookie('remote-resources-disable', '1');
     }
 
     /**
@@ -38,8 +39,6 @@ class CheckSearchDachiCest
         $dachiPage->clickToSeeResult();
         $I->canSeeInCurrentUrl($data['url']);
         $I->waitForText($data['header']);
-
-
     }
 
     protected function getDataSearchRegion()
