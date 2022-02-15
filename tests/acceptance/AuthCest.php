@@ -10,21 +10,7 @@ use Page\Acceptance\MyPage;
  */
 class AuthCest
 {
-
-/**
- * Общий класс для тестов фронтенда.
- */
-
-    /**
-     * Переход на поддомен десктопной версии перед выполнением тестов
-     *
-     * @param \AcceptanceTester $I
-     */
-    public function _before(AcceptanceTester $I)
-    {
-    }
-
-        /*
+        /**
          * Авторизуемся невалидным паролем
          */
     public function checkAuthWithInvalidPassword(AcceptanceTester $I)
@@ -46,7 +32,7 @@ class AuthCest
         $I->waitForElementVisible(AuthPage::$alertDanger);
     }
 
-    /*
+    /**
      * Авторизуемся валидными данными через Подачу
      */
     public function checkSuccessfulAuth(AcceptanceTester $I)

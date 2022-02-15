@@ -73,11 +73,16 @@ class ComplexPage
     }
 
     /*
+     *
+     */
+    public static $priceMin = "1";
+
+    /*
      * метод заполняет цифрами фильтр "Цена До"
      */
     public function fillPriceTo()
     {
-        $this->acceptanceTester->fillField(self::$filterPriceTo, 1);
+        $this->acceptanceTester->fillField(self::$filterPriceTo, self::$priceMin);
 
         return $this;
     }

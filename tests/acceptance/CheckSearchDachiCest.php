@@ -9,6 +9,12 @@ use Page\Acceptance\MainPage;
  */
 class CheckSearchDachiCest
 {
+
+    /**
+     * Переход на поддомен десктопной версии перед выполнением тестов
+     *
+     * @param \AcceptanceTester $I
+     */
     public function _before(AcceptanceTester $I)
     {
         $I->amOnPage(MainPage::$URL_RELEASE);
@@ -18,11 +24,11 @@ class CheckSearchDachiCest
     }
 
     /**
+     * Проверяем поиск Дачи по регионам Казахстана
+     * @dataProvider getDataSearchRegion
+     * @return void
      * @param AcceptanceTester $I
      * @param Example $data
-     * Проверяем поиск Дачи по регионам Казахстана
-     * @return void
-     * @dataProvider getDataSearchRegion
      */
     public function searchDachaInKz(AcceptanceTester $I, Example $data)
     {
@@ -41,6 +47,10 @@ class CheckSearchDachiCest
         $I->waitForText($data['header']);
     }
 
+    /**
+     * Возвращает масссив данных : регион, url, заголовок
+     * @return string[][]
+     */
     protected function getDataSearchRegion()
     {
         return [
