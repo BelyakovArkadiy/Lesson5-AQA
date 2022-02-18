@@ -5,27 +5,12 @@ use Page\Acceptance\ComplexPage;
 use Page\Acceptance\AuthPage;
 use Page\Acceptance\MyPage;
 
-/*
- *  Класс для проверки главной страницы Новостроек
- */
-class CheckMainComplexCest
-{
-
-/**
- * Общий класс для тестов фронтенда.
- */
-
     /**
-     * Переход на поддомен десктопной версии перед выполнением тестов
-     *
-     * @param \AcceptanceTester $I
+     *  Класс для проверки главной страницы Новостроек
      */
-    public function _before(AcceptanceTester $I)
-    {
-
-    }
-
-    /*
+    class CheckMainComplexCest
+{
+    /**
      * Проверяем переход на страницу Новостроек и отображение карточек ЖК
      *
      */
@@ -45,7 +30,7 @@ class CheckMainComplexCest
         $I->seeNumberOfElements(ComplexPage::$cardOfComplex, 12);
     }
 
-    /*
+    /**
      * Проверяем поиск ЖК за 1 тенге и нулевую выдачу
      */
     public function checkSearchAndNullIssuance(AcceptanceTester $I)

@@ -13,11 +13,6 @@ class DachiPage
      */
     public static $URL = '/prodazha/dachi/';
 
-    /**
-     * @var string
-     * Урл Дачи Алматы в продаже
-     */
-    public static $URL_DACHI_ALMATY = '/prodazha/dachi/almaty';
 
     /**
      * Локатор выбора региона
@@ -26,10 +21,10 @@ class DachiPage
     public  static $chooseRegion = ".region-dropdown-label";
 
     /**
-     * Локатор Алматы
+     * Локатор региона
      *
      */
-    public  static $almaty = "//*[@data-alias='almaty']";
+    public  static $region = "//*[@data-alias='%s']";
 
     /**
      * Локатор кнопки Выбрать
@@ -43,9 +38,6 @@ class DachiPage
      */
     public  static $btnSeeResult = ".btn-submit.search-btn-main";
 
-
-
-
     /**
      * объект Тестера
      *
@@ -53,7 +45,7 @@ class DachiPage
      */
     protected $acceptanceTester;
 
-    /*
+    /**
      * метод контструктора
      */
     public function __construct(\AcceptanceTester $I)
@@ -61,15 +53,15 @@ class DachiPage
         $this->acceptanceTester = $I;
     }
 
-    /*
+    /**
      * метод кликает на линк Выбор города
      */
-    public function clickToChoiceCity()
+    public function clickToChoiceRegion()
     {
         $this->acceptanceTester->click(self::$chooseRegion);
 
     }
-     /*
+     /**
      * метод кликает на линк Показать результаты
      */
     public function clickToSeeResult()
