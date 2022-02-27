@@ -14,3 +14,5 @@ modules:
         browser: chrome
         window_size: maximize
     - \Helper\Acceptance
+    - Asserts
+

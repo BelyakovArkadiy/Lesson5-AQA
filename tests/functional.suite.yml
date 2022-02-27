@@ -11,4 +11,5 @@ modules:
         - PhpBrowser:
               url: https://new-master-kr.kolesa-team.org/
         - \Helper\Functional
+        - Asserts
     step_decorators: ~
