@@ -1,9 +1,9 @@
 <?php
-use Page\Acceptance\ComplexPage;
 use Step\Acceptance\Auth;
+use Page\Acceptance\ComplexPage;
+use Step\Acceptance\Favorite;
 use Page\Acceptance\MainPage;
 use Page\Acceptance\MyPage;
-use Step\Acceptance\Favorite;
 
 /**
  * Класс для проверки Избранных
@@ -13,43 +13,48 @@ class FavoriteCest
     /**
      * Переход на поддомен десктопной версии перед выполнением тестов
      * Авторизация
+     * Переход из ЛК на Главную
+     *
      * @param Auth AcceptanceTester $I
      * @return void
      */
-    public function _before(AcceptanceTester $I, Auth $auth)
+    public function _before(Auth $auth)
     {
-        $I->amOnPage(MainPage::$URL_RELEASE);
-        $I->setCookie('tutorialDisabled', 'true');
+        $myPage = new MyPage($auth);
+
+        $auth->amOnPage(MainPage::$URL_RELEASE);
+        $auth->setCookie('tutorialDisabled', 'true');
 //        отключаем сторонние скрипты (QA)
-        $I->setCookie('remote-resources-disable', '1');
+        $auth->setCookie('remote-resources-disable', '1');
         $auth->authWithValidData();
+        $auth->waitForElementVisible(MyPage::$logoKrisha);
+        $myPage->clickToLogoKrisha();
+        $auth->amOnPage(MainPage::$URL);
     }
 
     /**
      * Проверяем количество комплексов в Избранном
-     * @param AcceptanceTester $I
+     *
+     * @param Favorite AcceptanceTester $I
      * @return void
      */
-    public function checkFavoriteComplex(AcceptanceTester $I, Favorite $favorite)
+    public function checkFavoriteComplex( Favorite $favorite)
     {
-        $myPage = new MyPage($I);
-        $mainPage = new MainPage($I);
+        $mainPage = new MainPage($favorite);
 
-        $I->waitForElementVisible(MyPage::$logoKrisha);
-        $myPage->clickToLogoKrisha();
-        $I->amOnPage(MainPage::$URL);
         $mainPage->clickToTabOfComplex();
         $favorite->addComplexToFavorite();
-        $I->assertEquals($favorite->getComplexNumber(), $I->grabTextFrom(ComplexPage::$valueFavorite));
+        $favorite->assertEquals($favorite->getComplexNumber(), $favorite->grabTextFrom(ComplexPage::$valueFavorite));
     }
 
     /**
      * Действия после каждого теста
      * Разлогиниться
+     *
      * @param Auth AcceptanceTester $I
      * @return void
      */
-    public function _after(AcceptanceTester $I, Auth $auth)
+    public function _after( Auth $auth)
     {
         $auth->logOut();
     }

@@ -1,5 +1,6 @@
 <?php
 namespace Step\Acceptance;
+
 use Page\Acceptance\AuthPage;
 use Page\Acceptance\MainPage;
 use Page\Acceptance\MyPage;
@@ -11,6 +12,7 @@ class Auth extends \AcceptanceTester
 {
     /**
      * Метод авторизации валидными данными
+     *
      * @return void
      */
     public function authWithValidData(){
@@ -35,6 +37,7 @@ class Auth extends \AcceptanceTester
 
     /**
      * Метод разлогинивающий пользователя
+     *
      * @return void
      */
     public function logOut(){

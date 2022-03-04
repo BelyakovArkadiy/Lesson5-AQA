@@ -5,7 +5,6 @@ use Page\Acceptance\ComplexPage;
 /**
  * Класс со StepObject для Избранных
  */
-
 class Favorite extends \AcceptanceTester
 {
     /**
@@ -15,6 +14,7 @@ class Favorite extends \AcceptanceTester
 
     /**
      * Метод добавляет  комплексы в Избранное
+     *
      * @return void
      */
    public function addComplexToFavorite()
@@ -29,11 +29,11 @@ class Favorite extends \AcceptanceTester
 
     /**
      * Метод возращает количество комплексов добавленных в Избранное
+     *
      * @return int
      */
     public function getComplexNumber()
     {
-
         return self::COMPLEX_NUMBER;
     }
 }

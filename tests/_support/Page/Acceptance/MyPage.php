@@ -52,6 +52,7 @@ class MyPage
 
     /**
      * Метод кликает на логотип Крыша для перехода на Главную страницу
+     *
      * @return void
      */
 
@@ -65,6 +66,7 @@ class MyPage
 
     /**
      * Метод кликает на таб Кабинет
+     *
      * @return $this
      */
     public function clickToTabCabinet(){
