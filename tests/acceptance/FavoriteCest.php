@@ -41,7 +41,6 @@ class FavoriteCest
     public function checkFavoriteComplex(FavoriteStep $I)
     {
         $mainPage = new MainPage($I);
-
         $complexNb = 5;
 
         $mainPage->clickToTabOfComplex();
