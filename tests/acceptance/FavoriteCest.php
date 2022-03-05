@@ -35,14 +35,14 @@ class FavoriteCest
     /**
      * Проверяем количество комплексов в Избранном
      *
-     * @param FavoriteStep AcceptanceTester $I
+     * @param FavoriteStep $I
      * @return void
      */
     public function checkFavoriteComplex(FavoriteStep $I)
     {
         $mainPage = new MainPage($I);
 
-    $complexNb = 5;
+        $complexNb = 5;
 
         $mainPage->clickToTabOfComplex();
         $I->addComplexToFavorite($complexNb);
@@ -53,7 +53,7 @@ class FavoriteCest
      * Действия после каждого теста
      * Разлогиниться
      *
-     * @param AuthStep AcceptanceTester $I
+     * @param AuthStep $I
      * @return void
      */
     public function _after(AuthStep $I)
