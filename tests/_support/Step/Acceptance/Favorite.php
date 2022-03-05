@@ -8,32 +8,17 @@ use Page\Acceptance\ComplexPage;
 class Favorite extends \AcceptanceTester
 {
     /**
-     * Количество комплексов для добавления в Избранное
-     */
-    public const COMPLEX_NUMBER = 5;
-
-    /**
      * Метод добавляет  комплексы в Избранное
      *
      * @return void
      */
-   public function addComplexToFavorite()
+   public function addComplexToFavorite($complexNb)
    {
        $I = $this;
 
-       for ($i = 1; $i <= self::COMPLEX_NUMBER; $i++) {
+       for ($i = 1; $i <= $complexNb; $i++) {
            $I->waitForElementVisible(sprintf(ComplexPage::$favorite, $i));
            $I->click(sprintf(ComplexPage::$favorite, $i));
        }
    }
-
-    /**
-     * Метод возращает количество комплексов добавленных в Избранное
-     *
-     * @return int
-     */
-    public function getComplexNumber()
-    {
-        return self::COMPLEX_NUMBER;
-    }
 }

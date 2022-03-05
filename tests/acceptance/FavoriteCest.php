@@ -18,18 +18,18 @@ class FavoriteCest
      * @param Auth AcceptanceTester $I
      * @return void
      */
-    public function _before(Auth $auth)
+    public function _before(Auth $I)
     {
-        $myPage = new MyPage($auth);
+        $myPage = new MyPage($I);
 
-        $auth->amOnPage(MainPage::$URL_RELEASE);
-        $auth->setCookie('tutorialDisabled', 'true');
+        $I->amOnPage(MainPage::$URL_RELEASE);
+        $I->setCookie('tutorialDisabled', 'true');
 //        отключаем сторонние скрипты (QA)
-        $auth->setCookie('remote-resources-disable', '1');
-        $auth->authWithValidData();
-        $auth->waitForElementVisible(MyPage::$logoKrisha);
+        $I->setCookie('remote-resources-disable', '1');
+        $I->authWithValidData();
+        $I->waitForElementVisible(MyPage::$logoKrisha);
         $myPage->clickToLogoKrisha();
-        $auth->amOnPage(MainPage::$URL);
+        $I->amOnPage(MainPage::$URL);
     }
 
     /**
@@ -38,13 +38,15 @@ class FavoriteCest
      * @param Favorite AcceptanceTester $I
      * @return void
      */
-    public function checkFavoriteComplex( Favorite $favorite)
+    public function checkFavoriteComplex(Favorite $I)
     {
-        $mainPage = new MainPage($favorite);
+        $mainPage = new MainPage($I);
+
+    $complexNb = 5;
 
         $mainPage->clickToTabOfComplex();
-        $favorite->addComplexToFavorite();
-        $favorite->assertEquals($favorite->getComplexNumber(), $favorite->grabTextFrom(ComplexPage::$valueFavorite));
+        $I->addComplexToFavorite($complexNb);
+        $I->assertEquals($complexNb, $I->grabTextFrom(ComplexPage::$valueFavorite));
     }
 
     /**
@@ -54,9 +56,9 @@ class FavoriteCest
      * @param Auth AcceptanceTester $I
      * @return void
      */
-    public function _after( Auth $auth)
+    public function _after(Auth $I)
     {
-        $auth->logOut();
+        $I->logOut();
     }
 
 }
