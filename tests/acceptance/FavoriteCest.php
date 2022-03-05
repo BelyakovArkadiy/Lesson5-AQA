@@ -1,7 +1,7 @@
 <?php
-use Step\Acceptance\Auth;
+use Step\Acceptance\AuthStep;
 use Page\Acceptance\ComplexPage;
-use Step\Acceptance\Favorite;
+use Step\Acceptance\FavoriteStep;
 use Page\Acceptance\MainPage;
 use Page\Acceptance\MyPage;
 
@@ -15,10 +15,10 @@ class FavoriteCest
      * Авторизация
      * Переход из ЛК на Главную
      *
-     * @param Auth AcceptanceTester $I
+     * @param AuthStep AcceptanceTester $I
      * @return void
      */
-    public function _before(Auth $I)
+    public function _before(AuthStep $I)
     {
         $myPage = new MyPage($I);
 
@@ -35,10 +35,10 @@ class FavoriteCest
     /**
      * Проверяем количество комплексов в Избранном
      *
-     * @param Favorite AcceptanceTester $I
+     * @param FavoriteStep AcceptanceTester $I
      * @return void
      */
-    public function checkFavoriteComplex(Favorite $I)
+    public function checkFavoriteComplex(FavoriteStep $I)
     {
         $mainPage = new MainPage($I);
 
@@ -53,10 +53,10 @@ class FavoriteCest
      * Действия после каждого теста
      * Разлогиниться
      *
-     * @param Auth AcceptanceTester $I
+     * @param AuthStep AcceptanceTester $I
      * @return void
      */
-    public function _after(Auth $I)
+    public function _after(AuthStep $I)
     {
         $I->logOut();
     }

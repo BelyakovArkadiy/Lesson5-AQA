@@ -8,7 +8,7 @@ use Page\Acceptance\MyPage;
 /**
  * Класс со StepObjects для входа/выхода из ЛК
  */
-class Auth extends \AcceptanceTester
+class AuthStep extends \AcceptanceTester
 {
     /**
      * Метод авторизации валидными данными

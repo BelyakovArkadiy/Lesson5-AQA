@@ -5,7 +5,7 @@ use Page\Acceptance\ComplexPage;
 /**
  * Класс со StepObject для Избранных
  */
-class Favorite extends \AcceptanceTester
+class FavoriteStep extends \AcceptanceTester
 {
     /**
      * Метод добавляет  комплексы в Избранное
