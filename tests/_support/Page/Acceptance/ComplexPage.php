@@ -38,6 +38,15 @@ class ComplexPage
     public static $buttonShow = '.kr-btn.kr-btn--blue';
 
     /**
+     * Селектор сердечка
+     */
+     public static $favorite = "(//i[contains(@class,'complex-card__favorite-icon fi-like')])[%s]";
+
+    /**
+     * Селектор значения Избранного
+     */
+    public static $valueFavorite = "(//span[@class='navbar-badge fav-nb-value'])[1]";
+    /**
      * объект Тестера
      *
      * @var \AcceptanceTester;
@@ -93,6 +102,15 @@ class ComplexPage
     public function clickShow()
     {
         $this->acceptanceTester->click(self::$buttonShow);
+
+        return $this;
+    }
+
+    /**
+     * Метод кликает на сердечко
+     */
+    public function clickToFavorite() {
+        $this->acceptanceTester->click(self::$favorite);
 
         return $this;
     }
