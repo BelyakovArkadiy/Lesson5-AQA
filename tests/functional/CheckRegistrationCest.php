@@ -40,7 +40,6 @@ class CheckRegistrationCest
      * @group ApiCest
      */
     public function checkAuthWithValidData(FunctionalTester $I) {
-
         $defaultJason =[
             'status' => 'string',
             'userId' => 'integer',
@@ -48,7 +47,6 @@ class CheckRegistrationCest
             'oaCode' => 'null'
 
         ];
-
         $userData = [
             'login'    => 'DosMukasan@mail.kz',
             'password' => '123123',
@@ -64,14 +62,13 @@ class CheckRegistrationCest
     }
 
     /**
-     * Ппроверяем ответ сервера при авторизации невалидными данными
+     * Проверяем ответ сервера при авторизации невалидными данными
      * @group ApiCest
      */
     public function checkAuthWithInvalidPassword(FunctionalTester $I){
-
         $userDataInvalid = [
             'login'    => 'InvalidLogin',
-            'password' => '1234567890 ',
+            'password' => '1234567890',
             'project'  => 'krisha',
             'csrf'     => "test"
         ];
@@ -81,5 +78,4 @@ class CheckRegistrationCest
         $I->seeResponseCodeIsClientError();
         $I->seeResponseContainsJson(['status' => "error"]);
     }
-
 }
