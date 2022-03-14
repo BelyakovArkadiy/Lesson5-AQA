@@ -37,10 +37,11 @@ class CheckRegistrationCest
 
     /**
      * Проверяем ответ сервера при авторизации  валидными данными
+     *
      * @group ApiCest
      */
     public function checkAuthWithValidData(FunctionalTester $I) {
-        $defaultJason =[
+        $expectedJsonShema =[
             'status' => 'string',
             'userId' => 'integer',
             'token'  => 'string',
@@ -58,11 +59,12 @@ class CheckRegistrationCest
         $I->sendPost('https://id.kolesa-team.org/login.json', $userData);
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseContainsJson(['status' => "ok"]);
-        $I->seeResponseMatchesJsonType($defaultJason);
+        $I->seeResponseMatchesJsonType($expectedJsonShema);
     }
 
     /**
      * Проверяем ответ сервера при авторизации невалидными данными
+     * 
      * @group ApiCest
      */
     public function checkAuthWithInvalidPassword(FunctionalTester $I){
