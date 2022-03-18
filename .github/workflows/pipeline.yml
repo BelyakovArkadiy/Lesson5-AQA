@@ -11,8 +11,6 @@ jobs:
           php-version: '7.4'
       - name: Install Dependencies
         run: composer install
-      - name: compose update
-        run: composer update --ignore-platform-reqs
       - name: Install Faker
         run: composer require fzaninotto/faker
       - name: Run chromedriver
