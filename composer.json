@@ -3,7 +3,8 @@
         "codeception/codeception": "^4.1",
         "codeception/module-phpbrowser": "^1.0.0",
         "codeception/module-asserts": "^1.0.0",
-        "codeception/module-webdriver": "^2.0"
+        "codeception/module-webdriver": "^2.0",
+        "codeception/module-rest": "^2.0"
     },
     "require": {
         "fakerphp/faker": "^1.19"

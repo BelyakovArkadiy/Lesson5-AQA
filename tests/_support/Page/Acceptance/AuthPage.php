@@ -1,5 +1,6 @@
 <?php
 namespace Page\Acceptance;
+use Faker;
 
     /*
      * Страница Авторизации/Регистрации

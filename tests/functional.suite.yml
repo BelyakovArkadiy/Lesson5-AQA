@@ -12,4 +12,8 @@ modules:
               url: https://new-master-kr.kolesa-team.org/
         - \Helper\Functional
         - Asserts
+        - REST:
+            depends: PhpBrowser
+            part: Json
+
     step_decorators: ~
