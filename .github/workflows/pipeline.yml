@@ -8,9 +8,11 @@ jobs:
       - uses: actions/checkout@v2
       - uses: nanasess/setup-php@master
         with:
-          php-version: '7.4'
+          php-version: '7.1'
       - name: Install Dependencies
         run: composer install --ignore-platform-reqs
+      - name: Install Faker
+        run: composer require fzaninotto/faker:^1.19.0
       - name: Run chromedriver
         run: nohup $CHROMEWEBDRIVER/chromedriver --url-base=/wd/hub /dev/null 2>&1 &
       - name: Run tests
