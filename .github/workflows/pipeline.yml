@@ -10,9 +10,9 @@ jobs:
         with:
           php-version: '7.4'
       - name: Install Dependencies
-        run: composer install --ignore-platform-reqs
+        run: composer install
       - name: Install Faker
-        run: composer require fzaninotto/faker:^1.19.0
+        run: composer require fzaninotto/faker
       - name: Run chromedriver
         run: nohup $CHROMEWEBDRIVER/chromedriver --url-base=/wd/hub /dev/null 2>&1 &
       - name: Run tests
