@@ -65,14 +65,14 @@ after - разлогиниться
 
 Functional test 1
   
-1. зайти на https://krisha.kz/
+1. зайти на  https://new-master-kr.kolesa-team.org/
 2. кликнуть на Регистрация
 3. Проверить что форма Регистрации доступна
 
 
 Functional test 2
 
-1. зайти на https://krisha.kz/
+1. зайти на  https://new-master-kr.kolesa-team.org/
 2. кликнуть на "Подать объявление"
 3. Проверить, что форма Регистрации доступна
 
