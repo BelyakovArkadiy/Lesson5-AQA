@@ -9,7 +9,7 @@ actor: FunctionalTester
 modules:
     enabled:
         - PhpBrowser:
-              url: https://new-master-kr.kolesa-team.org//
+              url: https://krisha.kz
         - \Helper\Functional
         - Asserts
         - REST:
