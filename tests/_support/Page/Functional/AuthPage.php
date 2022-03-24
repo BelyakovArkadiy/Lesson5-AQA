@@ -16,7 +16,7 @@ class AuthPage
     /*
      * Урл страницы регистрации/авторизации
      */
-    public static $URL = 'https://id.kolesa-team.org/login/?destination=https%3A%2F%2Fnew-master-kr.kolesa-team.org%2Fpassport%2Fregister';
+    public static $URL = 'https://id.kolesa.kz/login/?destination=https%3A%2F%2Fkrisha.kz%2Fmy';
 
     /*
      * Селектор формы регистрации/авторизации
